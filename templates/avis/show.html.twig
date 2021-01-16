@@ -8,5 +8,6 @@
         <p>{{avis.description}}</p>
     </article>
 
+    <a href="{{path('app_avis_edit', {id: avis.id})}}">Editer</a> | 
     <a href="{{path('app_home')}}">Accueil</a>
 {% endblock %}

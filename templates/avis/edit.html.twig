@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Editer l'avis #" ~ avis.id %}
+
+{% block body %}
+    <h1>Editer l'avis #{{ avis.id }}</h1>
+    {{ form_start(monForm) }}
+        {{ form_widget(monForm) }}
+        <input type="submit" value="Mettre à jour l'avis" formnovalidate>
+    {{ form_end(monForm) }}
+{% endblock %}
