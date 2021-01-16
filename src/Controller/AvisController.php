@@ -15,7 +15,7 @@ class AvisController extends AbstractController
      */
     public function index(AvisRepository $avisRepository): Response
     {
-        $avis = $avisRepository->findAll();
+        $avis = $avisRepository->findBy([],['createdAt' => 'DESC']);
         
         return $this->render('avis/index.html.twig', compact('avis'));
     }
