@@ -75,4 +75,15 @@ class AvisController extends AbstractController
             'monForm' => $form->createView()
             ]);
     }
+
+    /**
+     * @Route("/avis/{id<[0-9]+>}/delete", name="app_avis_delete" , methods="DELETE")
+     */
+    public function delete(Avis $avis, EntityManagerInterface $em): Response
+    {
+        $em->remove($avis);
+        $em->flush();
+
+        return $this->redirectToRoute('app_home');
+    }
 }
