@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title avis.titre %}
+
+{% block body %}
+    <article>
+        <h1>{{avis.titre}}</h1>
+        <p>{{avis.description}}</p>
+    </article>
+
+    <a href="{{path('app_home')}}">Accueil</a>
+{% endblock %}
