@@ -9,8 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AvisRepository;
 use App\Entity\Avis;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use App\Form\AvisType;
 
 class AvisController extends AbstractController
 {
@@ -31,11 +30,7 @@ class AvisController extends AbstractController
     {
         $avis = new Avis;
 
-        $form = $this->createFormBuilder($avis)
-                ->add('titre', TextType::class)
-                ->add('description', TextareaType::class)
-                ->getForm()
-        ;
+        $form = $this->createForm(AvisType::class,$avis);
         
         $form->handleRequest($request);
 
@@ -60,15 +55,13 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/avis/{id<[0-9]+>}/edit", name="app_avis_edit" , methods="GET|POST")
+     * @Route("/avis/{id<[0-9]+>}/edit", name="app_avis_edit" , methods="GET|PUT")
      */
     public function edit(Request $request, Avis $avis, EntityManagerInterface $em): Response
     {
-        $form = $this->createFormBuilder($avis)
-                ->add('titre', TextType::class)
-                ->add('description', TextareaType::class)
-                ->getForm()
-        ;
+        $form = $this->createForm(AvisType::class,$avis, [
+            'method' => 'PUT'
+        ]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
