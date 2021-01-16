@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Retrouve plein d'avis par ici !"%}
+
+{% block body %}
+    <h1>{{avis|length}} avis</h1>
+    {% for avi in avis %}
+        <article>
+        <h2>{{avi.titre}}</h2>
+        <p>{{avi.description}}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
