@@ -77,13 +77,15 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/avis/{id<[0-9]+>}/delete", name="app_avis_delete" , methods="DELETE")
+     * @Route("/avis/{id<[0-9]+>}/delete", name="app_avis_delete" , methods={"DELETE"})
      */
-    public function delete(Avis $avis, EntityManagerInterface $em): Response
+    public function delete(Request $request,Avis $avis, EntityManagerInterface $em): Response
     {
-        $em->remove($avis);
-        $em->flush();
-
+          
+        if ($this->isCsrfTokenValid('avis_deletion_' . $avis->getId(), $request->request->get('csrf_token'))){
+            $em->remove($avis);
+            $em->flush();
+        }
         return $this->redirectToRoute('app_home');
     }
 }
