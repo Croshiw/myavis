@@ -6,6 +6,7 @@ use App\Repository\AvisRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use App\Entity\Traits\Timestampable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AvisRepository::class)
@@ -24,11 +25,15 @@ class Avis
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      */
     private $titre;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(min=10)
      */
     private $description;
 
