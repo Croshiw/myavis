@@ -7,7 +7,8 @@
     {% for avis in avis %}
         <article>
         <h2><a href="{{path('app_avis_show',{id:avis.id})}}">{{avis.titre}}</a></h2>
-        <p>{{avis.description}}</p>
+        <p>{{ avis.description | u.truncate(10 ,'...',false)}}</p>
+        <p>Posté {{avis.createdAt | ago}}
         </article>
     {% endfor %}
 {% endblock %}
