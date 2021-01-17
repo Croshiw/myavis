@@ -77,7 +77,7 @@ class AvisController extends AbstractController
     }
 
     /**
-     * @Route("/avis/{id<[0-9]+>}/delete", name="app_avis_delete" , methods={"DELETE"})
+     * @Route("/avis/{id<[0-9]+>}", name="app_avis_delete" , methods={"DELETE"})
      */
     public function delete(Request $request,Avis $avis, EntityManagerInterface $em): Response
     {
