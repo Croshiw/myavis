@@ -38,6 +38,8 @@ class AvisController extends AbstractController
             $em->persist($avis);
             $em->flush();
 
+            $this->addFlash('success',"L'avis a été ajouté !");
+
             return $this->redirectToRoute('app_home');
         }
 
@@ -67,6 +69,8 @@ class AvisController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $em->flush();
 
+            $this->addFlash('success',"L'avis a été modifié !");
+
             return $this->redirectToRoute('app_home');
         }
 
@@ -85,6 +89,8 @@ class AvisController extends AbstractController
         if ($this->isCsrfTokenValid('avis_deletion_' . $avis->getId(), $request->request->get('csrf_token'))){
             $em->remove($avis);
             $em->flush();
+
+            $this->addFlash('info',"L'avis a été supprimé !");
         }
         return $this->redirectToRoute('app_home');
     }
