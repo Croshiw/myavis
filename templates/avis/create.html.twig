@@ -3,9 +3,12 @@
 {% block title "Nouveau Avis"%}
 
 {% block body %}
-    <h1>Donnes ton avis</h1>
-    {{ form_start(monForm) }}
-        {{ form_widget(monForm) }}
-        <input type="submit" value="Ajouter avis" formnovalidate>
-    {{ form_end(monForm) }}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1>Donnes ton avis</h1>
+    
+            {{ include('avis/_form.html.twig') }}
+        </div>
+    </div>
+    
 {% endblock %}

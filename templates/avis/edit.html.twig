@@ -3,9 +3,11 @@
 {% block title "Editer l'avis #" ~ avis.id %}
 
 {% block body %}
-    <h1>Editer l'avis #{{ avis.id }}</h1>
-    {{ form_start(monForm) }}
-        {{ form_widget(monForm) }}
-        <input type="submit" value="Mettre à jour l'avis" formnovalidate>
-    {{ form_end(monForm) }}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+        <h1>Editer l'avis #{{ avis.id }}</h1>
+
+        {{ include('avis/_form.html.twig', {submitButtonText: "Modifier l'avis"}) }}
+        </div>
+    </div>
 {% endblock %}

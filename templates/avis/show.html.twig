@@ -10,8 +10,7 @@
 
     <a href="{{path('app_avis_edit', {id: avis.id})}}">Editer</a> | 
     <a href="#" onclick="event.preventDefault(); confirm('Confirmer la suppression') &&
-    document.getElementById('js-pin-delete-form').submit();">Supprimer</a> |
-    <a href="{{path('app_home')}}">Accueil</a>
+    document.getElementById('js-pin-delete-form').submit();">Supprimer</a>
 
     <form id="js-pin-delete-form" method="POST" action="{{path('app_avis_delete', {id: avis.id}) }}" style="display: none;">
         <input type="hidden" name="csrf_token" value="{{ csrf_token('avis_deletion_' ~ avis.id) }}">

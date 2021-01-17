@@ -1,0 +1,7 @@
+{{ form_start(monForm) }}
+        {{ form_widget(monForm) }}
+        <br>
+        <div class="d-grid gap-2">
+            <input type="submit" value="{{ submitButtonText ?? "Ajouter l'avis"}}" class="btn btn-primary" formnovalidate>
+        </div>
+    {{ form_end(monForm) }}
