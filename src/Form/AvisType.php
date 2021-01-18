@@ -6,6 +6,7 @@ use App\Entity\Avis;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AvisType extends AbstractType
 {
@@ -14,6 +15,13 @@ class AvisType extends AbstractType
         $builder
             ->add('titre')
             ->add('description')
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image (JPG ou PNG)',
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => 'Supprimer',
+                'download_uri' => false,
+            ])
         ;
     }
 
