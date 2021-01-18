@@ -50,3 +50,14 @@ body {
 .required {
     @extend .mt-2
 }
+
+.avis img{
+    transition: transform 0.3s ease-out;
+    &:hover{
+        transform: scale(1.075);
+    }
+}
+
+a{
+    text-decoration: none;
+}

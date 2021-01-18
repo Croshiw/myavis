@@ -3,12 +3,29 @@
 {% block title "Retrouve plein d'avis par ici !"%}
 
 {% block body %}
-    <h1>{{avis|length}} avis</h1>
-    {% for avis in avis %}
-        <article>
-        <h2><a href="{{path('app_avis_show',{id:avis.id})}}">{{avis.titre}}</a></h2>
-        <p>{{ avis.description | u.truncate(10 ,'...',false)}}</p>
-        <p>Posté {{avis.createdAt | ago}}
-        </article>
-    {% endfor %}
+    {% if avis|length > 0 %}
+        <h1 class="mb-4 text-center text-muted">{{avis|length}} avis</h1>
+
+        {% for row in avis|batch(3) %}
+            <div class="row mb-5">
+                {% for avis in row %}
+                    <div class="col-md-4">
+                        <article class="avis bg-white rounded shadow">
+                            <div class="mw-100 overflow-hidden">
+                                <a href="{{path('app_avis_show',{id:avis.id})}}"><img src="{{ (avis.imageName ? vich_uploader_asset(avis) : asset('build/images/default.jpg'))
+                                    | imagine_filter('squared_thumbnail_medium')}}" alt="{{ avis.titre }}" class="w-100 rounded-top"/></a>
+                            </div>
+                            
+                            <h2 class="h4 pt-2" align="center"><a href="{{path('app_avis_show',{id:avis.id})}}" class="text-primary">{{avis.titre}}</a></h2>
+                            <p class="pb-3 text-muted" align="center"><small> Posté par [OWNER FULL NAME]</small></p>
+                        </article>
+                    </div>     
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    {% else %}
+        <p class="mt-5 h1 text-center">Pas d'avis encore. <a href="{{ path('app_avis_create')}}">Soyez le premier!</a></p>
+    
+    {% endif %}    
 {% endblock %}
