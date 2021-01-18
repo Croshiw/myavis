@@ -30,3 +30,23 @@ body {
     }
 }
 
+.vich-image {
+    .form-check{
+        @extend .mt-2
+    }
+    
+    img{
+        @extend .mb-2;
+        @extend .rounded;
+        @extend .shadow;
+        @extend .img-thumbnail;
+    }
+}
+
+.form-control {
+    @extend .mt-2
+}
+
+.required {
+    @extend .mt-2
+}
