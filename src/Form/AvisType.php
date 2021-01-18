@@ -21,6 +21,7 @@ class AvisType extends AbstractType
                 'allow_delete' => true,
                 'delete_label' => 'Supprimer',
                 'download_uri' => false,
+                'imagine_pattern' => 'squared_thumbnail_small',
             ])
         ;
     }
