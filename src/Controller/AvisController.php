@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AvisRepository;
+use App\Repository\UserRepository;
 use App\Entity\Avis;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AvisType;
@@ -26,7 +27,7 @@ class AvisController extends AbstractController
     /**
      * @Route("/avis/create", name="app_avis_create" , methods={"GET","POST"})
      */
-    public function create(Request $request, EntityManagerInterface $em): Response
+    public function create(Request $request, EntityManagerInterface $em, UserRepository $userRepo): Response
     {
         $avis = new Avis;
 
@@ -35,6 +36,8 @@ class AvisController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+            $mec = $userRepo->findOneBy(['email' => 'redjohn@example.com']);
+            $avis->setUser($mec);
             $em->persist($avis);
             $em->flush();
 

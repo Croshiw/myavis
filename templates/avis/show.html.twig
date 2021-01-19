@@ -8,12 +8,12 @@
         <div class="col-md-6 mx-auto">
             <article class="avis bg-white rounded shadow">
                 <div class="mw-100 rounded-top overflow-hidden">
-                    <a href="{{path('app_avis_show',{id:avis.id})}}"><img src="{{ (avis.imageName ? vich_uploader_asset(avis) : asset('build/images/default.jpg'))
-                           | imagine_filter('squared_thumbnail_medium')}}" alt="{{ avis.titre }}" class="w-100"/></a>
+                    <img src="{{ (avis.imageName ? vich_uploader_asset(avis) : asset('build/images/default.jpg'))
+                           | imagine_filter('squared_thumbnail_medium')}}" alt="{{ avis.titre }}" class="w-100"/>
                 </div>             
-                <h1 class="h4 pt-2" align="center"><a href="{{path('app_avis_show',{id:avis.id})}}" class="text-primary">{{avis.titre}}</a></h1>
+                <h1 class="h4 pt-2 text-primary" align="center">{{avis.titre}}</h1>
                 <p class="pb-3 text-muted" align="center"><small> Submitted <time datetime="{{avis.createdAT|date('Y-m-d H:i:s')}}">{{ avis.createdAt|ago }}</time>  by {{ avis.user.fullName }}</small></p>
-                <p class="pb-3" align="center"> {{avis.description}}</p>
+                <p class="pb-3 text-break" align="center"> {{avis.description}}</p>
 
                 <div class="pb-3" align="center">
                     <a href="{{path('app_avis_edit', {id: avis.id})}}" class="btn btn-primary">Editer</a>
