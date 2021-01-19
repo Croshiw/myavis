@@ -7,9 +7,9 @@
     <div class="row">
         <div class="col-md-6 mx-auto">
             <article class="avis bg-white rounded shadow">
-                <div class="mw-100 overflow-hidden">
+                <div class="mw-100 rounded-top overflow-hidden">
                     <a href="{{path('app_avis_show',{id:avis.id})}}"><img src="{{ (avis.imageName ? vich_uploader_asset(avis) : asset('build/images/default.jpg'))
-                           | imagine_filter('squared_thumbnail_medium')}}" alt="{{ avis.titre }}" class="w-100 rounded-top"/></a>
+                           | imagine_filter('squared_thumbnail_medium')}}" alt="{{ avis.titre }}" class="w-100"/></a>
                 </div>             
                 <h2 class="h4 pt-2" align="center"><a href="{{path('app_avis_show',{id:avis.id})}}" class="text-primary">{{avis.titre}}</a></h2>
                 <p class="pb-3 text-muted" align="center"><small> Submitted <time datetime="{{avis.createdAT|date('Y-m-d H:i:s')}}">{{ avis.createdAt|ago }}</time>  by [OWNER FULL NAME]</small></p>
