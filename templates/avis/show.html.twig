@@ -12,7 +12,7 @@
                            | imagine_filter('squared_thumbnail_medium')}}" alt="{{ avis.titre }}" class="w-100"/></a>
                 </div>             
                 <h1 class="h4 pt-2" align="center"><a href="{{path('app_avis_show',{id:avis.id})}}" class="text-primary">{{avis.titre}}</a></h1>
-                <p class="pb-3 text-muted" align="center"><small> Submitted <time datetime="{{avis.createdAT|date('Y-m-d H:i:s')}}">{{ avis.createdAt|ago }}</time>  by [OWNER FULL NAME]</small></p>
+                <p class="pb-3 text-muted" align="center"><small> Submitted <time datetime="{{avis.createdAT|date('Y-m-d H:i:s')}}">{{ avis.createdAt|ago }}</time>  by {{ avis.user.fullName }}</small></p>
                 <p class="pb-3" align="center"> {{avis.description}}</p>
 
                 <div class="pb-3" align="center">

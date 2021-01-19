@@ -17,7 +17,7 @@
                             </div>
                             
                             <h2 class="h4 pt-2" align="center"><a href="{{path('app_avis_show',{id:avis.id})}}" class="text-primary">{{avis.titre}}</a></h2>
-                            <p class="pb-3 text-muted" align="center"><small> Posté par [OWNER FULL NAME]</small></p>
+                            <p class="pb-3 text-muted" align="center"><small> Posté par {{ avis.user.fullName }}</small></p>
                         </article>
                     </div>     
                 {% endfor %}

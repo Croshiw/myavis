@@ -183,7 +183,8 @@ class User implements UserInterface
 
     public function removeAvi(Avis $avi): self
     {
-        if ($this->avis->removeElement($avi)) {
+        if ($this->avis->contains($avi)) {
+            $this->avis->removeElement($avi);
             // set the owning side to null (unless already changed)
             if ($avi->getUser() === $this) {
                 $avi->setUser(null);
@@ -191,6 +192,11 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 
 }
