@@ -25,7 +25,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'I consent to the privacy policy and terms of service',
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'You should agree to our privacy policy and terms of service.',
                     ]),
                 ],
             ])
@@ -39,7 +39,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'VVotre mot de passe doit avoir au moins {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
