@@ -36,8 +36,7 @@ class AvisController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $mec = $userRepo->findOneBy(['email' => 'redjohn@example.com']);
-            $avis->setUser($mec);
+            $avis->setUser($this->getUser());
             $em->persist($avis);
             $em->flush();
 
