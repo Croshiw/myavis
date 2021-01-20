@@ -7,10 +7,6 @@
 {% block body %}
 <div class="row">
         <div class="col-md6 mx-auto" style="width : 50%;">
-         {% for flashError in app.flashes('verify_email_error') %}
-            <div class="alert alert-error rounded mb-3" role="alert">{{ flashError }}</div>
-        {% endfor %}
-
         <h1 class="mt-5 mb-3 text-center">Créer un compte</h1>
         <p class="text-center text-muted">Rejoignez nous dans la quête aux avis!</p>
 
