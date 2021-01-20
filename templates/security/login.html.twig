@@ -36,7 +36,7 @@
                         </label>
                     </div>
 
-                    <a class="mt-2" href="#">Mot de passe oublié?</a>
+                    <a class="mt-2" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié?</a>
                 </div>
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
