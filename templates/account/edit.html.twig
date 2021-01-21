@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title 'Editer le compte utilisateur' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1 class="my-5 text-center">Editer votre profil</h1>
+            {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.firstName, {
+                            label: 'Prénom'
+                        }) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.lastName, {
+                            label: 'Nom'
+                        }) }}
+                    </div>
+                </div>
+                {{ form_row(form.email) }}
+                <div class="d-grid gap-2 mt-3">
+                    <button type="submit" class="btn btn-primary btn-lg" formnovalidate>Valider les changements</button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
