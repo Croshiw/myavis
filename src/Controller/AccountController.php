@@ -11,9 +11,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Form\ChangePasswordFormType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/account")
+ * @IsGranted("ROLE_USER")
  */
 class AccountController extends AbstractController
 {
@@ -30,6 +32,7 @@ class AccountController extends AbstractController
      */
     public function edit(Request $request, EntityManagerInterface $em): Response
     {
+        
         $user = $this->getUser();
         $form = $this->createForm(UserFormType::class,$user);
 
