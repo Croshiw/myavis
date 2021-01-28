@@ -1,0 +1,10 @@
+{# templates/bundles/TwigBundle/Exception/error403.html.twig #}
+{% extends 'layouts/base.html.twig' %}
+
+{% block body %}
+    <h1>Access forbidden</h1>
+
+    <p>
+        You cannot access this page. Go back to <a href="{{ path('app_home') }}">homepage</a>.
+    </p>
+{% endblock %}
