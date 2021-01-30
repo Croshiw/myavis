@@ -15,6 +15,7 @@
                 <p class="pb-3 text-muted" align="center"><small> Submitted <time datetime="{{avis.createdAT|date('Y-m-d H:i:s')}}">{{ avis.createdAt|ago }}</time>  by {{ avis.user.fullName }}</small></p>
                 <p class="pb-3 text-break" align="center"> {{avis.description}}</p>
 
+                {% if app.user == avis.user %}
                 <div class="pb-3" align="center">
                     <a href="{{path('app_avis_edit', {id: avis.id})}}" class="btn btn-primary">Editer</a>
                     <a href="#" onclick="event.preventDefault(); confirm('Confirmer la suppression') &&
@@ -25,6 +26,7 @@
                         <input type="hidden" name="_method" value="DELETE">
                     </form>
                 </div>
+                {% endif %}
             </article>
 
             

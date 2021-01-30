@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,8 @@ use App\Repository\UserRepository;
 use App\Entity\Avis;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AvisType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 class AvisController extends AbstractController
 {
@@ -26,9 +29,11 @@ class AvisController extends AbstractController
 
     /**
      * @Route("/avis/create", name="app_avis_create" , methods={"GET","POST"})
+     * @Security("is_granted('ROLE_USER') && user.isVerified()== true")
      */
     public function create(Request $request, EntityManagerInterface $em, UserRepository $userRepo): Response
     {
+
         $avis = new Avis;
 
         $form = $this->createForm(AvisType::class,$avis);
@@ -60,9 +65,11 @@ class AvisController extends AbstractController
 
     /**
      * @Route("/avis/{id<[0-9]+>}/edit", name="app_avis_edit" , methods="GET|PUT")
+     * @Security("is_granted('AVIS_MANAGE', avis)")
      */
     public function edit(Request $request, Avis $avis, EntityManagerInterface $em): Response
     {
+
         $form = $this->createForm(AvisType::class,$avis, [
             'method' => 'PUT'
         ]);
@@ -84,10 +91,11 @@ class AvisController extends AbstractController
 
     /**
      * @Route("/avis/{id<[0-9]+>}", name="app_avis_delete" , methods={"DELETE"})
+     * @Security("is_granted('AVIS_MANAGE', avis)")
      */
     public function delete(Request $request,Avis $avis, EntityManagerInterface $em): Response
     {
-          
+
         if ($this->isCsrfTokenValid('avis_deletion_' . $avis->getId(), $request->request->get('csrf_token'))){
             $em->remove($avis);
             $em->flush();
